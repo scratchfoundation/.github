@@ -10,7 +10,7 @@ The development of Scratch is an ongoing process, and we love to have people in 
   * If you don't have an issue in mind already, you can look through the [Bugs & Glitches forum.](https://scratch.mit.edu/discuss/3/) Look for users reporting problems, reproduce the problem yourself, and file new issues following our guidelines. 
 
 * **Fixing bugs**
-  * You can request to fix a bug in a comment on the issue if you at mention the repo coordinator, who for this repo is @chrisgarrity.
+  * You can request to fix a bug in a comment on the issue if you at mention the repo coordinator for this repository. Check the list of [Repository Coordinators](./CONTRIBUTING.md#repository-coordinators) to find out who to @-mention.
     * If the issue is marked "Help Wanted" you can go ahead and start working on it!
   * **We will only accept Pull Requests for bugs that have an issue filed that has a priority label** 
     * If you're interested in fixing a bug with no issue, file the issue first and wait for it to have a priority added to it.
@@ -21,7 +21,7 @@ The development of Scratch is an ongoing process, and we love to have people in 
     * Wait until an issue has been assigned a priority before working on it. Also leave a comment if you start working on a prioritized issue to avoid duplicating efforts.
 
 #### Repository Coordinators
-Public repositories that where we encourage contributions have a repository coordinator. Here are the current assignments:
+Public repositories where we encourage contributions have a repository coordinator. Here are the current assignments:
 * scratch-audio @ericrosenbaum
 * scratch-blocks @ericrosenbaum
 * scratch-desktop @cwillisf
@@ -37,6 +37,7 @@ Public repositories that where we encourage contributions have a repository coor
 * scratchjr-website @chrisgarrity
 
 Repositories that do not accept external PRs:
+* scratch-l10n
 * scratch-parser
 * scratch-render-fonts
 * scratch-resources
@@ -58,7 +59,7 @@ If you want to work on fixing issues, you should be familiar with Git and Github
 4. Run the code, and reproduce the problem
 5. Create your branch from the `develop` branch
 6. Make code changes to fix the problem
-7. Run `npm test` to make sure that your changes pass our tests
+7. Test your changes and make sure existing tests pass. In most scratch repositories running `npm test` will run the tests. We strongly encourage you to write tests for any changes.
 8. Commit your changes
 9. Push your branch to your fork
 10. Create your pull request
