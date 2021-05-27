@@ -14,6 +14,5 @@ _Explain why these changes should be made. Be sure to include a brief summary of
 
 ### Test Coverage
 
-_Please show how you have added tests to cover your changes or provide step by step instructions for testing your changes. Include screenshots if applicable. 
+_Please show how you have added tests to cover your changes, or provide step-by-step instructions for testing your changes. Include screenshots if applicable. 
 When testing manually, please make sure to test in more than one browser, and let us know which browsers you used._
-

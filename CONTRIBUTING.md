@@ -4,21 +4,21 @@ The development of Scratch is an ongoing process, and we love to have people in 
 ### Ways to Help
 
 * **Documenting bugs**
-  * If you've identified a bug in Scratch or ScratchJr you should first check to see if it's been filed as an issue, if not you can file one.  Make sure you follow the issue template.
+  * If you've identified a bug in Scratch or ScratchJr, you should first check to see if it's been filed as an issue. If it has not been filed, please file an issue!  Make sure you follow the issue template.
   * It's important that we can consistently reproduce issues. When writing an issue, be sure to follow our [reproduction step guidelines](https://github.com/LLK/scratch-gui/wiki/Writing-good-repro-steps).
     * Some issues are marked "Needs Repro". Adding a comment with good reproduction steps to those issues is a great way to help.
   * If you don't have an issue in mind already, you can look through the [Bugs & Glitches forum.](https://scratch.mit.edu/discuss/3/) Look for users reporting problems, reproduce the problem yourself, and file new issues following our guidelines. 
 
 * **Fixing bugs**
-  * You can request to fix a bug in a comment on the issue if you at mention the repo coordinator for this repository. Check the list of [Repository Coordinators](./CONTRIBUTING.md#repository-coordinators) to find out who to @-mention.
+  * You can request to fix a bug in a comment on the issue if you mention the repo coordinator for this repository, using the @ symbol with their Github username. Check the list of [Repository Coordinators](./CONTRIBUTING.md#repository-coordinators) to find out who to @-mention.
     * If the issue is marked "Help Wanted" you can go ahead and start working on it!
   * **We will only accept Pull Requests for bugs that have an issue filed that has a priority label** 
-    * If you're interested in fixing a bug with no issue, file the issue first and wait for it to have a priority added to it.
+    * If you're interested in fixing a bug that does not have an issue already, please file the issue first and wait for it to have a priority added to it.
   
   * We are not looking for Pull Requests ("PR") for every issue and may deny a PR if it doesn't fit our criteria.
-    * We are far more likely to accept a PR if it is for an issue marked with Help Wanted.
+    * We are far more likely to accept a PR if it is for an issue marked with the "Help Wanted" label.
     * We will not accept PRs for issues marked with "Needs Discussion" or "Needs Design."
-    * Wait until an issue has been assigned a priority before working on it. Also leave a comment if you start working on a prioritized issue to avoid duplicating efforts.
+    * Wait until an issue has been assigned a priority before working on it. Also leave a comment if you start working on a prioritized issue, so other people don't start working on it also.
 
 #### Repository Coordinators
 Public repositories where we encourage contributions have a repository coordinator. Here are the current assignments:
