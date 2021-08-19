@@ -27,10 +27,9 @@ Public repositories where we encourage contributions have a repository coordinat
 * scratch-desktop @cwillisf
 * scratch-gui @chrisgarrity
 * scratch-link @cwillisf
-* scratch-paint @fsih
 * scratch-render @cwillisf
 * scratch-storage @cwillisf
-* scratch-svg-renderer @fsih
+* scratch-svg-renderer @cwillisf
 * scratch-vm @ericrosenbaum
 * scratch-www @benjiwheeler
 * scratchjr @chrisgarrity
@@ -38,6 +37,7 @@ Public repositories where we encourage contributions have a repository coordinat
 
 Repositories that do not accept external PRs:
 * scratch-l10n
+* scratch-paint
 * scratch-parser
 * scratch-render-fonts
 * scratch-resources
