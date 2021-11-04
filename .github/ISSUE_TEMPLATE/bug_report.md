@@ -25,7 +25,6 @@ Steps to reproduce the behavior:
 3. Scroll down to '....'
 4. See error
 
-[Tips on writing good reproduction steps](https://github.com/LLK/scratch-gui/wiki/Writing-good-repro-steps)
 ### System Details
 _If the problem occurs in the browser, please provide operating system and browser e.g. Mac OS 10.11.6 Safari 10.0_
 
