@@ -7,32 +7,30 @@ assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+### Expected Behavior
 
-**To Reproduce**
+_Please describe what should happen_
+
+### Actual Behavior
+
+_Describe what actually happens_
+
+### Steps to Reproduce
+
+_Explain what someone needs to do in order to see what's described in *Actual behavior* above_
+
 Steps to reproduce the behavior:
-1. Go to '...'
+1. Go to 'https://scratch.mit.edu/...'
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+[Tips on writing good reproduction steps](https://github.com/LLK/scratch-gui/wiki/Writing-good-repro-steps)
+### System Details
+_If the problem occurs in the browser, please provide operating system and browser e.g. Mac OS 10.11.6 Safari 10.0_
+
+_If using one of the Apps please provide the app version and device details, e.g. Scratch 3.0.57, Android 9 on HP x360 Chromebook_
 
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
-
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
-
-**Additional context**
-Add any other context about the problem here.
