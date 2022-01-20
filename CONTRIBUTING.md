@@ -10,11 +10,10 @@ The development of Scratch is an ongoing process, and we love to have people in 
   * If you don't have an issue in mind already, you can look through the [Bugs & Glitches forum.](https://scratch.mit.edu/discuss/3/) Look for users reporting problems, reproduce the problem yourself, and file new issues following our guidelines. 
 
 * **Fixing bugs**
-  * You can request to fix a bug in a comment on the issue if you mention the repo coordinator for this repository, using the @ symbol with their Github username. Check the list of [Repository Coordinators](./CONTRIBUTING.md#repository-coordinators) to find out who to @-mention.
-    * If the issue is marked "Help Wanted" you can go ahead and start working on it!
-  * **We will only accept Pull Requests for bugs that have an issue filed that has a priority label** 
+  * **We will only accept Pull Requests for bugs that have an issue filed with a priority label** 
     * If you're interested in fixing a bug that does not have an issue already, please file the issue first and wait for it to have a priority added to it.
-  
+  * You can request to fix a bug in a comment on the issue if you mention the repo coordinator for this repository, using the @ symbol with their Github username. Check the list of [Repository Coordinators](./CONTRIBUTING.md#repository-coordinators) to find out who to @-mention.
+    * The "help wanted" label indicates issues that the Scratch Team thinks would be appropriate for an external contributor to work on. You should still wait for an issue to be prioritized before working on it or submitting a PR.  
   * We are not looking for Pull Requests ("PR") for every issue and may deny a PR if it doesn't fit our criteria.
     * We are far more likely to accept a PR if it is for an issue marked with the "Help Wanted" label.
     * We will not accept PRs for issues marked with "Needs Discussion" or "Needs Design."
