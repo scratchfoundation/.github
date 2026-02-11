@@ -8,7 +8,7 @@ assignees: ''
 ---
 ## Resolves
 
-_What Github issue does this resolve (please include link)? Please do not submit PRs that are not associated with an
+_What GitHub issue does this resolve (please include link)? Please do not submit PRs that are not associated with an
 issue, or that only partially implement a fix._
 
 - Resolves #0
