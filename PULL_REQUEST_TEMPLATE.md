@@ -1,21 +1,14 @@
----
-name: Pull Request
-about: Submit a Pull Request to contribute changes
-title: ''
-labels: ''
-assignees: ''
-
----
-## Resolves
-
-_What GitHub issue does this resolve (please include link)? Please do not submit PRs that are not associated with an
-issue, or that only partially implement a fix._
-
-- Resolves #0
-
-## Proposed Changes
+# Proposed Changes
 
 _Describe what this Pull Request does._
+
+## Resolves
+
+_What GitHub issue does this resolve? If this PR fixes a bug, please link to the issue by updating the `Resolves #0`
+line below. If the bug has no associated issue, please file one first. Please do not submit bug fixes without an
+associated issue, or that only partially implement a fix._
+
+- Resolves #0
 
 ## Reason for Changes
 
