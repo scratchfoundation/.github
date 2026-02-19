@@ -34,6 +34,10 @@ source communities help us along the way.
       load for a release
     * We are just short on time (it's usually this one - sorry!)
 
+## AI-Assisted Development
+
+See [CONTRIBUTING.AI.md](CONTRIBUTING.AI.md) for our policy and guidelines regarding AI-assisted development.
+
 ## Learning Git and Github
 
 If you want to work on fixing issues, you should be familiar with Git and Github.
