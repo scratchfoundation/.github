@@ -38,6 +38,41 @@ source communities help us along the way.
 
 See [CONTRIBUTING.AI.md](CONTRIBUTING.AI.md) for our policy and guidelines regarding AI-assisted development.
 
+## Development Standards
+
+The following standards apply across Scratch repositories. Per-repo `CONTRIBUTING.md` files may add or override
+them for that specific repo.
+
+### Technology choices
+
+* **Language**: TypeScript is preferred. JavaScript is acceptable when a package is not yet configured for
+  TypeScript.
+* **Linting**: All JS/TS code uses [`eslint-config-scratch`](https://github.com/scratchfoundation/eslint-config-scratch).
+* **Bundler**: Vite for new repos; existing webpack configs are being migrated to Vite over time.
+* **Test framework**: Vitest for new packages; existing packages may use Jest or Tap.
+* **Commit messages**: [Conventional Commits](https://www.conventionalcommits.org/) style as understood by
+  `semantic-release` (e.g., `feat:`, `fix:`, `chore:`). Not all repos enforce this automatically, but please
+  follow the convention regardless.
+* **Browser targets**: Code targeting browsers should work within the
+  [Baseline Widely Available](https://web.dev/baseline) feature set. Avoid features outside that set without
+  calling it out explicitly; don't add polyfills for features already within it.
+
+### Dependencies and bundling
+
+Getting dependency classification right keeps downstream consumers clean and makes it possible for third parties
+to use our packages independently.
+
+* **`peerDependencies`**: packages that are part of this package's public interface, or where two copies in the
+  same application would cause runtime errors — React and ReactDOM being the primary example. Always externalize
+  peer dependencies in the bundle.
+* **`dependencies`**: packages owned as private implementation details. For example, `scratch-vm` is a dependency
+  of `scratch-gui`; a consuming application like `scratch-www` does not need to know it exists.
+* **`devDependencies`**: anything only needed during development, build, or testing.
+* **Bundling**: application packages (`scratch-www`, `scratch-desktop`) bundle everything into the final output;
+  library packages externalize peer dependencies and bundle regular dependencies.
+
+Many existing repos don't yet fully follow these rules; the direction is to drift toward them incrementally.
+
 ## Learning Git and Github
 
 If you want to work on fixing issues, you should be familiar with Git and Github.
