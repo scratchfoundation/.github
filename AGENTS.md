@@ -154,3 +154,5 @@ Review all changes and confirm:
 - **Correctness**: Logic is sound and edge cases were considered.
 - **Comments**: Comments are necessary, short, and clear; self-explanatory code has none.
 - **Simplicity**: Implementation is as simple as possible; no speculative abstractions remain.
+- **Documentation**: Update `AGENTS.md` and any other documentation files whose content is affected by the change
+  (commands, repo structure, conventions, etc.).
