@@ -41,6 +41,9 @@ Use these defaults unless the user asks otherwise:
    `if (!foo) return` could make a bug harder to find; `if (!foo) throw new Error(...)` surfaces it.
 8. Do not add error handling, fallbacks, or validation for scenarios that cannot happen. Trust internal code and
    framework guarantees. Only validate at system boundaries (user input, external APIs).
+9. Refer to GitHub issues and pull requests using the fully qualified `org/repo#1234` format, not just `#1234`.
+   The Scratch ecosystem involves many forks, and bare `#1234` references become ambiguous or broken as changes
+   are merged between forks.
 
 ## What this repository is
 
