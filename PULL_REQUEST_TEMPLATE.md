@@ -1,21 +1,28 @@
-# Proposed Changes
+## Summary
 
-_Describe what this Pull Request does._
+<!--
+What does this change do, and why? One or two sentences is plenty for a small
+change. For anything larger, add the motivation and context a reviewer needs:
+design decisions, alternatives considered, and screenshots/recordings for UI.
+-->
 
 ## Resolves
 
-_What GitHub issue does this resolve? If this PR fixes a bug, please link to the issue by updating the `Resolves #0`
-line below. If the bug has no associated issue, please file one first. Please do not submit bug fixes without an
-associated issue, or that only partially implement a fix._
+<!--
+Link the issue or ticket this addresses so it links/closes automatically:
+  - GitHub issue:  Resolves scratchfoundation/<repo>#123 (use the fully qualified
+                   org/repo form, not bare #123 — it stays unambiguous across forks)
+  - Jira:          Part of UEPR-456
+Use "N/A" for changes with no associated issue (e.g. small maintenance tasks).
+-->
 
-- Resolves #0
+## Testing
 
-## Reason for Changes
+<!--
+How did you verify this works? Steps, commands, or automated tests, plus
+screenshots/recordings for visible changes.
 
-_Explain why these changes should be made. Be sure to include a brief summary of the issue the Pull Request solves too._
-
-## Test Coverage
-
-_Please show how you have added tests to cover your changes, or provide step-by-step instructions for testing your
-changes. Include screenshots if applicable. When testing manually, please make sure to test in more than one browser,
-and let us know which browsers you used._
+If the change affects rendering, the editor UI, or anything user-visible, list
+the OS + browser combinations you tested (e.g. macOS/Chrome, Windows/Edge,
+iPad/Safari, Chromebook) — aim for at least two.
+-->
