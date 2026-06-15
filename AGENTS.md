@@ -4,6 +4,11 @@ This file is a template for `AGENTS.md` files across Scratch repositories. Copy 
 replace the placeholder sections with repo-specific content. The HTML comments are standing instructions for
 whoever adapts the template — they are safe to leave in place.
 
+Claude Code reads `CLAUDE.md`, not `AGENTS.md`. So that it picks up this guide, also add a one-line `CLAUDE.md`
+next to this file whose only content is the import directive `@AGENTS.md`. Use a plain import file rather than a
+symlink — a committed symlink does not survive Windows checkouts. Other agent tools continue to read `AGENTS.md`
+directly, so this bridge adds Claude Code support without duplicating any content.
+
 When adapting this template, consider adding sections for **Repository layout** and any language- or
 framework-specific conventions (TypeScript guidelines, React patterns, testing conventions, etc.) that are
 non-obvious from the code itself.
@@ -60,6 +65,7 @@ organization. It provides org-wide GitHub defaults:
 - `CONTRIBUTING.AI.md` — Scratch's org-wide policy on AI-assisted development
 - `PULL_REQUEST_TEMPLATE.md` — default PR template
 - `AGENTS.md` (this file) — template for per-repo agent guides
+- `CLAUDE.md` — a one-line import (`@AGENTS.md`) so Claude Code, which reads `CLAUDE.md` rather than `AGENTS.md`, loads this guide
 
 There is no build step and no test suite. Changes here are prose and Markdown only.
 
