@@ -66,8 +66,10 @@ organization. It provides org-wide GitHub defaults:
 - `PULL_REQUEST_TEMPLATE.md` — default PR template
 - `AGENTS.md` (this file) — template for per-repo agent guides
 - `CLAUDE.md` — a one-line import (`@AGENTS.md`) so Claude Code, which reads `CLAUDE.md` rather than `AGENTS.md`, loads this guide
+- `.github/workflows/copilot-review.yml` — reusable workflow that requests a Copilot code review when a PR is labeled
+  `copilot-review`; see its header comment for how to adopt it in a repo
 
-There is no build step and no test suite. Changes here are prose and Markdown only.
+There is no build step and no test suite. Changes here are Markdown and GitHub Actions workflow YAML.
 
 ## Build and lint
 

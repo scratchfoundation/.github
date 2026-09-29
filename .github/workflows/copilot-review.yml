@@ -1,0 +1,46 @@
+# Requests a Copilot code review on the pull request whose label triggered the caller.
+#
+# Reviews requested by a bot (here, github-actions[bot] via GITHUB_TOKEN) are billed to the organization rather than
+# to the person who applied the label. Only people with triage access or higher can apply labels, so this can't be
+# triggered by arbitrary contributors.
+#
+# To adopt in a repo, create a `copilot-review` label and add this caller workflow:
+#
+#   name: Copilot review
+#   on:
+#     pull_request_target:
+#       types: [labeled]
+#   jobs:
+#     copilot-review:
+#       if: github.event.label.name == 'copilot-review'
+#       permissions:
+#         pull-requests: write
+#       uses: scratchfoundation/.github/.github/workflows/copilot-review.yml@main
+#
+# This workflow never checks out or runs pull request code, which is what makes pull_request_target safe here.
+
+name: Copilot review
+
+on:
+  workflow_call:
+
+permissions:
+  pull-requests: write
+
+jobs:
+  request-review:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      LABEL: ${{ github.event.label.name }}
+    steps:
+      # Removing the label first lets it be re-applied for another review. If the label is applied twice in quick
+      # succession, the second run's removal fails and it stops before requesting a duplicate review.
+      - name: Remove trigger label
+        run: gh api --method DELETE "repos/$REPO/issues/$PR_NUMBER/labels/$LABEL"
+      # Copilot picks up the request immediately, so it never appears in the PR's pending reviewers. A
+      # copilot_work_started timeline event and, later, a review are the signs that it worked.
+      - name: Request Copilot review
+        run: gh api --method POST "repos/$REPO/pulls/$PR_NUMBER/requested_reviewers" -f 'reviewers[]=copilot-pull-request-reviewer[bot]'
