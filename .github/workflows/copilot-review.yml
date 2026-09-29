@@ -9,8 +9,14 @@
 #
 # Only people with triage access or higher can apply labels, so this can't be triggered by arbitrary contributors.
 #
-# To adopt in a repo, create a `copilot-review` label, give the org secret COPILOT_REVIEW_TOKEN (and the PAT) access
-# to the repo, and add this caller workflow:
+# To adopt in a repo (steps 1-3 need an org admin; ask one which machine user and team hold this role):
+#
+#   1. Add the repo to the machine user's team with the triage role.
+#   2. Signed in as the machine user, edit its fine-grained PAT (Settings > Developer settings > Fine-grained tokens)
+#      and add the repo to its repository list. If the org requires PAT approval, approve the change in org settings.
+#   3. In org settings > Secrets and variables > Actions, add the repo to COPILOT_REVIEW_TOKEN's selected repositories.
+#   4. Create a `copilot-review` label in the repo.
+#   5. Add this caller workflow to the repo's default branch (pull_request_target runs the base branch's copy):
 #
 #   name: Copilot review
 #   on:
@@ -25,8 +31,14 @@
 #       secrets:
 #         COPILOT_REVIEW_TOKEN: ${{ secrets.COPILOT_REVIEW_TOKEN }}
 #
+#   6. Verify: apply the label to a PR. The label should disappear, the PR timeline should show `review_requested` by
+#      the machine user, and a Copilot review should arrive within a few minutes. A 403 from the request step usually
+#      means the PAT lacks access to the repo or is awaiting approval.
+#
 # Pin to a commit SHA rather than `@main`: the caller runs with write credentials, so each repo should review changes
-# to this workflow before running them. Renovate keeps the pin current via digest-update PRs.
+# to this workflow before running them. Renovate keeps the pin current via digest-update PRs. Those PRs only change the
+# SHA, so if this workflow gains a secret or input, don't merge Renovate's PR on its own: update the pin and pass the
+# new value in the same caller change (a caller can't pass a secret its pinned version doesn't declare).
 #
 # This workflow never checks out or runs pull request code, which is what makes pull_request_target (and exposing the
 # PAT on fork PRs) safe here.
