@@ -15,7 +15,10 @@
 #       if: github.event.label.name == 'copilot-review'
 #       permissions:
 #         pull-requests: write
-#       uses: scratchfoundation/.github/.github/workflows/copilot-review.yml@main
+#       uses: scratchfoundation/.github/.github/workflows/copilot-review.yml@<commit SHA> # main
+#
+# Pin to a commit SHA rather than `@main`: the caller runs with a write token, so each repo should review changes to
+# this workflow before running them. Renovate keeps the pin current via digest-update PRs.
 #
 # This workflow never checks out or runs pull request code, which is what makes pull_request_target safe here.
 
