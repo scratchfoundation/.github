@@ -33,7 +33,8 @@
 #
 #   6. Verify: apply the label to a PR. The label should disappear, the PR timeline should show `review_requested` by
 #      the machine user, and a Copilot review should arrive within a few minutes. A 403 from the request step usually
-#      means the PAT lacks access to the repo or is awaiting approval.
+#      means the PAT lacks access to the repo or is awaiting approval. If Copilot accepts the request but never starts
+#      (e.g. the org's Copilot budget is used up), the run fails after 3 minutes and leaves a comment on the PR.
 #
 # Pin to a commit SHA rather than `@main`: the caller runs with write credentials, so each repo should review changes
 # to this workflow before running them. Renovate keeps the pin current via digest-update PRs. Those PRs only change the
@@ -73,4 +74,33 @@ jobs:
       - name: Request Copilot review
         env:
           GH_TOKEN: ${{ secrets.COPILOT_REVIEW_TOKEN }}
-        run: gh api --method POST "repos/$REPO/pulls/$PR_NUMBER/requested_reviewers" -f 'reviewers[]=copilot-pull-request-reviewer[bot]'
+        run: |
+          echo "REQUESTED_AT=$(date -u -d '-10 seconds' +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
+          gh api --silent --method POST "repos/$REPO/pulls/$PR_NUMBER/requested_reviewers" \
+            -f 'reviewers[]=copilot-pull-request-reviewer[bot]'
+      # The request can succeed and still never be picked up, for example when the org's Copilot budget is used up;
+      # Copilot leaves no trace on the PR in that case. Watching for it to start is the only way to tell.
+      - name: Wait for Copilot to start
+        id: wait
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for _ in $(seq 12); do
+            sleep 15
+            started=$(gh api --paginate "repos/$REPO/issues/$PR_NUMBER/timeline" --jq '.[] | select(
+              (.event == "copilot_work_started" and .created_at >= env.REQUESTED_AT) or
+              (.event == "reviewed" and .submitted_at >= env.REQUESTED_AT and
+                (.user.login == "Copilot" or .user.login == "copilot-pull-request-reviewer[bot]"))
+            ) | .event')
+            if [ -n "$started" ]; then exit 0; fi
+          done
+          echo "::error::Copilot didn't start a review within 3 minutes of the request."
+          exit 1
+      - name: Report that Copilot didn't start
+        if: failure() && steps.wait.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --silent --method POST "repos/$REPO/issues/$PR_NUMBER/comments" -f body="Copilot didn't start \
+          a review within 3 minutes of the \`$LABEL\` request. The organization's Copilot budget may be used up. \
+          To try again later, re-apply the \`$LABEL\` label."
