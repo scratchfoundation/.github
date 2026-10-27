@@ -68,6 +68,8 @@ organization. It provides org-wide GitHub defaults:
 - `CLAUDE.md` — a one-line import (`@AGENTS.md`) so Claude Code, which reads `CLAUDE.md` rather than `AGENTS.md`, loads this guide
 - `.github/workflows/request-copilot-review.yml` — reusable workflow that requests a Copilot code review when a PR is
   labeled `request-copilot-review`; see its header comment for how to adopt it in a repo
+- `.github/workflows/request-copilot-review-label.yml` — this repo's own caller for that workflow, referenced by local
+  path instead of a SHA pin; see its comment for why
 
 There is no build step and no test suite. Changes here are Markdown and GitHub Actions workflow YAML.
 
