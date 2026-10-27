@@ -15,19 +15,20 @@
 #   2. Signed in as the machine user, edit its fine-grained PAT (Settings > Developer settings > Fine-grained tokens)
 #      and add the repo to its repository list. If the org requires PAT approval, approve the change in org settings.
 #   3. In org settings > Secrets and variables > Actions, add the repo to COPILOT_REVIEW_TOKEN's selected repositories.
-#   4. Create a `copilot-review` label in the repo.
-#   5. Add this caller workflow to the repo's default branch (pull_request_target runs the base branch's copy):
+#   4. Create a `request-copilot-review` label in the repo.
+#   5. Add this caller workflow to the repo's default branch as .github/workflows/request-copilot-review.yml
+#      (pull_request_target runs the base branch's copy):
 #
-#   name: Copilot review
+#   name: Request Copilot review
 #   on:
 #     pull_request_target:
 #       types: [labeled]
 #   jobs:
-#     copilot-review:
-#       if: github.event.label.name == 'copilot-review'
+#     request-copilot-review:
+#       if: github.event.label.name == 'request-copilot-review'
 #       permissions:
 #         pull-requests: write
-#       uses: scratchfoundation/.github/.github/workflows/copilot-review.yml@<commit SHA> # main
+#       uses: scratchfoundation/.github/.github/workflows/request-copilot-review.yml@<commit SHA> # main
 #       secrets:
 #         COPILOT_REVIEW_TOKEN: ${{ secrets.COPILOT_REVIEW_TOKEN }}
 #
@@ -38,13 +39,14 @@
 #
 # Pin to a commit SHA rather than `@main`: the caller runs with write credentials, so each repo should review changes
 # to this workflow before running them. Renovate keeps the pin current via digest-update PRs. Those PRs only change the
-# SHA, so if this workflow gains a secret or input, don't merge Renovate's PR on its own: update the pin and pass the
-# new value in the same caller change (a caller can't pass a secret its pinned version doesn't declare).
+# SHA, so if this workflow gains a secret or input, or moves to a new path, don't merge Renovate's PR on its own:
+# update the pin and the caller's other references in the same change (a caller can't pass a secret its pinned version
+# doesn't declare, or call a path that doesn't exist at its pinned SHA).
 #
 # This workflow never checks out or runs pull request code, which is what makes pull_request_target (and exposing the
 # PAT on fork PRs) safe here.
 
-name: Copilot review
+name: Request Copilot review
 
 on:
   workflow_call:
